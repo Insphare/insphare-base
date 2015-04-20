@@ -2,6 +2,7 @@
     "name": "insphare/base",
     "type": "library",
     "description": "Insphare base modul",
+	"homepage": "https://github.com/Insphare/insphare-base/",
     "keywords": ["insphare", "base"],
     "license": "MIT",
     "authors": [
