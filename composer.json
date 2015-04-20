@@ -1,0 +1,19 @@
+{
+    "name": "insphare/base",
+    "type": "library",
+    "description": "Insphare base modul",
+    "keywords": ["insphare", "base"],
+    "license": "MIT",
+    "authors": [
+        {"name": "Manuel Will", "email": "info@insphare.de"}
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/yaml": "~2.6"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": { "Insphare": "lib/" }
+    }
+}
