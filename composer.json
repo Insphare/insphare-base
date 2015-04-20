@@ -2,7 +2,7 @@
     "name": "insphare/base",
     "type": "library",
     "description": "Insphare base modul",
-	"homepage": "https://github.com/Insphare/insphare-base/",
+    "homepage": "https://github.com/Insphare/insphare-base/",
     "keywords": ["insphare", "base"],
     "license": "MIT",
     "authors": [
@@ -15,6 +15,6 @@
     "require-dev": {
     },
     "autoload": {
-        "psr-0": { "Insphare": "lib/" }
+        "psr-0": { "Insphare\\": "lib/" }
     }
 }
