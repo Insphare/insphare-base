@@ -13,10 +13,6 @@ use Symfony\Component\Yaml\Yaml;
 class Setup {
 
 	/**
-	 * @var bool
-	 */
-	private $isRunning = false;
-	/**
 	 * @var array
 	 */
 	private $configDirs = array();
@@ -31,13 +27,17 @@ class Setup {
 	 */
 	private $proxyPath = '';
 
+	private static $isAlreadyRunning = false;
+
 	/**
 	 *
 	 */
 	public function __construct() {
-		$path = array_slice(explode(DIRECTORY_SEPARATOR, __DIR__), 0, -4);
-		$path[] = 'base-config';
-		$this->configDirs[] = implode(DIRECTORY_SEPARATOR, $path);
+		if (true === self::$isAlreadyRunning) {
+			throw new Exception('Please do not call this setup class manually! Please use the ObjectContainer->getSetup()');
+		}
+
+		self::$isAlreadyRunning = 1;
 	}
 
 	/**
@@ -62,22 +62,7 @@ class Setup {
 		$this->proxyPath = (string)$proxyPath;
 	}
 
-	/**
-	 *
-	 */
-	public function run() {
-		if (true === $this->isRunning) {
-			throw new Exception('The insphare/orm application is already running.');
-		}
-
-		if (count($this->configDirs) === 1) {
-			throw new Exception('You have to register your config path! Use Setup->addCustomConfig()');
-		}
-
-		if (!count($this->entityPath)) {
-			throw new Exception('You have to register your path to your entities! Use Setup->addEntityPath()');
-		}
-
+	private function loadConfig() {
 		$envConfig = array();
 		foreach ($this->configDirs as $dir) {
 			$fileSpl = new DirectoryIterator($dir);
@@ -88,15 +73,42 @@ class Setup {
 			}
 		}
 
+		return $envConfig;
+	}
+
+	public function addConfigDirectory($directoryPath) {
+		$this->configDirs[] = $directoryPath;
+		$config = $this->loadConfig();
+		$this->writeToEnvironment($config);
+
+	}
+
+	private function writeToEnvironment(array $config) {
+		foreach ($config as $key => $value) {
+			EnvironmentVars::set($key, $value);
+		}
+	}
+
+	public function addConfigValue($array) {
+
+	}
+
+	/**
+	 *
+	 */
+	public function run() {
+		if (count($this->configDirs) === 1) {
+			throw new Exception('You have to register your config path! Use Setup->addCustomConfig()');
+		}
+
+		$envConfig = $this->loadConfig();
+
 		$overWriteEntityPath = array('doctrine.path' => array('entities' => $this->entityPath));
 		if (!empty($this->proxyPath)) {
 			$overWriteEntityPath['doctrine.path']['proxy'] = $this->proxyPath;
 		}
 
 		$envConfig = array_replace_recursive($envConfig, $overWriteEntityPath);
-		foreach ($envConfig as $key => $value) {
-			EnvironmentVars::set($key, $value);
-		}
-		$this->isRunning = true;
+		$this->writeToEnvironment($envConfig);
 	}
 }
