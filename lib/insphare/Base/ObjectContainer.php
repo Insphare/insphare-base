@@ -1,12 +1,13 @@
 <?php
 namespace Insphare\Base;
-use Insphare\Base\Application\Setup;
 
 /**
+ * The following objects have to be assigned with fully qualified namespace!
+ *
  * Core_ObjectContainer
  *
- * @method Setup getSetup
- * @method Setup setSetup
+ * @method Insphare\Base\Application\Setup getSetup
+ * @method Insphare\Base\Application\Setup setSetup
  */
 class ObjectContainer {
 
