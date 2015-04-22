@@ -23,6 +23,11 @@ class Setup {
 	private $entityPath = array();
 
 	/**
+	 * @var array
+	 */
+	private $listenerPath = array();
+
+	/**
 	 * @var string
 	 */
 	private $proxyPath = '';
@@ -46,6 +51,13 @@ class Setup {
 	 */
 	public function addCustomConfig($configPath) {
 		$this->configDirs[] = (string)$configPath;
+	}
+
+	/**
+	 * @param string $listenerPath
+	 */
+	public function addListenerPath($listenerPath) {
+		$this->listenerPath[] = (string)$listenerPath;
 	}
 
 	/**
@@ -106,6 +118,10 @@ class Setup {
 		$overWriteEntityPath = array('doctrine.path' => array('entities' => $this->entityPath));
 		if (!empty($this->proxyPath)) {
 			$overWriteEntityPath['doctrine.path']['proxy'] = $this->proxyPath;
+		}
+
+		if (!empty($this->listenerPath)) {
+			$overWriteEntityPath['doctrine.listenerPath'] = $this->listenerPath;
 		}
 
 		$envConfig = array_replace_recursive($envConfig, $overWriteEntityPath);

@@ -61,7 +61,7 @@ class Autoloader {
 	 * @param $className
 	 */
 	private function autoload($className) {
-		if (0 === strpos($className, $this->nameSpace . self::NS_CHAR)) {
+		if (!is_null($this->nameSpace) && 0 === strpos($className, $this->nameSpace . self::NS_CHAR)) {
 			foreach ($this->includePath as $includePath) {
 				$file = str_replace(array(
 						'\\',
@@ -72,11 +72,37 @@ class Autoloader {
 						$includePath,
 						self::DS
 					), $className) . '.php';
-				if (file_exists($file)) {
-					include_once $file;
+				if ($this->checkLoadClass($file)) {
 					break;
 				}
 			}
 		}
+		elseif (is_null($this->nameSpace)) {
+			foreach ($this->includePath as $includePath) {
+				$file = $includePath . self::DS . str_replace(array(
+						'_',
+						self::DS . self::DS
+					), array(
+						self::DS,
+						self::DS
+					), $className) . '.php';
+				if ($this->checkLoadClass($file)) {
+					break;
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param string $file
+	 * @return bool|null
+	 */
+	private function checkLoadClass($file) {
+		if (file_exists($file)) {
+			include_once $file;
+			return true;
+		}
+
+		return null;
 	}
 }
