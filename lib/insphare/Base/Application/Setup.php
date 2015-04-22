@@ -1,5 +1,6 @@
 <?php
 namespace Insphare\Base\Application;
+use Insphare\Base\Autoloader;
 use Insphare\Base\DirectoryIterator;
 use Insphare\Base\EnvironmentVars;
 use Insphare\Base\Exception;
@@ -101,10 +102,6 @@ class Setup {
 		}
 	}
 
-	public function addConfigValue($array) {
-
-	}
-
 	/**
 	 *
 	 */
@@ -122,6 +119,9 @@ class Setup {
 
 		if (!empty($this->listenerPath)) {
 			$overWriteEntityPath['doctrine.listenerPath'] = $this->listenerPath;
+			$autoloader = new Autoloader();
+			array_walk($this->listenerPath, array($autoloader, 'addIncludePath'));
+			$autoloader->register();
 		}
 
 		$envConfig = array_replace_recursive($envConfig, $overWriteEntityPath);
