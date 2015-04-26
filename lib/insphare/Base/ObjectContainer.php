@@ -8,6 +8,9 @@ namespace Insphare\Base;
  *
  * @method Insphare\Base\Application\Setup getSetup
  * @method Insphare\Base\Application\Setup setSetup
+ *
+ * @method Insphare\Config\Configuration getConfiguration
+ * @method Insphare\Config\Configuration setConfiguration
  */
 class ObjectContainer {
 
