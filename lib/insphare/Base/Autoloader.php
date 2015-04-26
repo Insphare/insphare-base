@@ -34,7 +34,7 @@ class Autoloader {
 	 * @param $path
 	 */
 	public function addIncludePath($path) {
-		$this->includePath[] = rtrim($path, self::DS);
+		$this->includePath[] = rtrim(str_replace(array('/', '\\'), self::DS, $path), self::DS);
 	}
 
 	/**
