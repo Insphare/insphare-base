@@ -171,7 +171,7 @@ class DirectoryIterator {
 	}
 
 	/**
-	 * @return array
+	 * @return \SplFileInfo[]
 	 */
 	public function getSplFiles() {
 		$this->read($this->destination, true);
