@@ -5,7 +5,7 @@ class Reveal {
 
 	private static $callback = array();
 
-	public static function injectCallback(callable $objectClass, $methodName) {
+	public static function injectCallback($objectClass, $methodName) {
 		self::$callback = array($objectClass, $methodName);
 	}
 
