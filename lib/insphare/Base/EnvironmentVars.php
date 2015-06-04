@@ -9,6 +9,16 @@ class EnvironmentVars {
 
 	const USER_ID = 'insphare.env.user_id';
 
+	const BASE_PATH = 'base.path';
+	const CONFIG_PATH = 'config.path';
+	const CACHE_PATH = 'cache.path';
+	const EXTERNAL_PATH = 'external.path';
+	const IS_DEVELOPMENT_MODE = 'system.environment.is_development';
+	const APPLICATION_NAME = 'app.name';
+	const ROUTE_DIRECTORY = 'route.directory';
+	const REQUEST_URI = 'server.request_uri';
+	const CURRENT_ROUTE = 'http.current.route';
+
 	/**
 	 * @var array
 	 */
@@ -18,6 +28,14 @@ class EnvironmentVars {
 	 * Never initialize this class.
 	 */
 	private function __construct() {}
+
+	/**
+	 * this class should never be cloned
+	 */
+	private function __clone() {
+	}
+
+	// @codeCoverageIgnoreStop
 
 	/**
 	 * @param string $key
