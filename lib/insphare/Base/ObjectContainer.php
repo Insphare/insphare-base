@@ -11,6 +11,9 @@ namespace Insphare\Base;
  *
  * @method Insphare\Config\Configuration getConfiguration
  * @method Insphare\Config\Configuration setConfiguration
+ *
+ * @method MVC_Request_Proxy getMvcRequestProxy
+ * @method MVC_Request_Proxy setMvcRequestProxy
  */
 class ObjectContainer {
 
