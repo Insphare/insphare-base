@@ -13,3 +13,4 @@ $autoloader->register();
 
 $container = new ObjectContainer();
 $container->setSetup(new Setup());
+$container->setClient((isset($_SERVER) ? $_SERVER : []));

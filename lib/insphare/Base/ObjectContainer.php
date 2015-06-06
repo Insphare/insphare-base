@@ -9,6 +9,9 @@ namespace Insphare\Base;
  * @method Insphare\Base\Application\Setup getSetup
  * @method Insphare\Base\Application\Setup setSetup
  *
+ * @method Insphare\Base\Client getClient
+ * @method Insphare\Base\Client setClient
+ *
  * @method Insphare\Config\Configuration getConfiguration
  * @method Insphare\Config\Configuration setConfiguration
  *
