@@ -1,6 +1,7 @@
 <?php
 
 use Insphare\Base\Application\Setup;
+use Insphare\Base\Client;
 use Insphare\Base\ObjectContainer;
 
 $ds = DIRECTORY_SEPARATOR;
@@ -13,4 +14,4 @@ $autoloader->register();
 
 $container = new ObjectContainer();
 $container->setSetup(new Setup());
-$container->setClient((isset($_SERVER) ? $_SERVER : []));
+$container->setClient(new Client(isset($_SERVER) ? $_SERVER : []));

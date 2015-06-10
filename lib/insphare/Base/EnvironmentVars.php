@@ -13,11 +13,14 @@ class EnvironmentVars {
 	const CONFIG_PATH = 'config.path';
 	const CACHE_PATH = 'cache.path';
 	const EXTERNAL_PATH = 'external.path';
+	const CONSOLE_PATH = 'console.path';
+	const TOOLS_PATH = 'tools.path';
 	const IS_DEVELOPMENT_MODE = 'system.environment.is_development';
 	const APPLICATION_NAME = 'app.name';
 	const ROUTE_DIRECTORY = 'route.directory';
 	const REQUEST_URI = 'server.request_uri';
 	const CURRENT_ROUTE = 'http.current.route';
+	const ENTITY_DIR = 'entity.dir';
 
 	/**
 	 * @var array
