@@ -21,6 +21,7 @@ class EnvironmentVars {
 	const REQUEST_URI = 'server.request_uri';
 	const CURRENT_ROUTE = 'http.current.route';
 	const ENTITY_DIR = 'entity.dir';
+	const MVC_CORE_DIRECTORY = 'mvc.core.directory';
 
 	/**
 	 * @var array
