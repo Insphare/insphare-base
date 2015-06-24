@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="rmt">
+	<description>Insphare coding standard</description>
+
+	<!--Ein Space nach dem Komma...	-->
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall"/>
+	<rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+	<rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier"/>
+	<rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
+
+	<rule ref="Generic.ControlStructures.InlineControlStructure"/>
+
+	<rule ref="Generic.Files.LineEndings"/>
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="160"/>
+			<property name="absoluteLineLimit" value="160"/>
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Formatting.DisallowMultipleStatements"/>
+
+	<!--Ein Space nach dem Komma...	-->
+	<rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+
+	<!--Geschweifte Klammer nach Functionen-->
+	<rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
+	<rule ref="Generic.Functions.CallTimePassByReference"/>
+	<rule ref="Generic.Functions.FunctionCallArgumentSpacing"/>
+
+	<rule ref="Generic.NamingConventions.ConstructorName"/>
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+	<rule ref="Generic.PHP.DeprecatedFunctions"/>
+	<rule ref="Generic.PHP.DisallowShortOpenTag"/>
+	<rule ref="Generic.PHP.ForbiddenFunctions"/>
+	<rule ref="Generic.PHP.LowerCaseConstant"/>
+
+	<rule ref="Squiz.Commenting.EmptyCatchComment"/>
+
+	<rule ref="Squiz.Debug.JSLint"/>
+
+	<rule ref="Zend.Files.ClosingTag"/>
+
+	<!--Keine klammer und fragezeichen allein akzeptieren-->
+	<rule ref="Generic.PHP.DisallowShortOpenTag"/>
+	<rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+
+	<!--Simply for to while(true)	-->
+	<rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+	<!--do not call a method on for-loops-->
+	<rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall"/>
+
+	<!--Detects incrementer jumbling in for loops.-->
+	<rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+
+	<rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+	<rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier"/>
+	<rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
+
+
+	<rule ref="Generic.PHP.CharacterBeforePHPOpeningTag"/>
+	<rule ref="Generic.PHP.DeprecatedFunctions"/>
+	<rule ref="Generic.PHP.DisallowShortOpenTag"/>
+	<rule ref="Generic.PHP.ForbiddenFunctions"/>
+	<rule ref="Generic.PHP.NoSilencedErrors"/>
+
+	<rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+
+	<rule ref="Generic.NamingConventions.ConstructorName"/>
+	<rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+
+	<rule ref="Generic.Formatting.NoSpaceAfterCast"/>
+
+	<!--<rule ref="Generic.Commenting.Todo"/>-->
+	<rule ref="Generic.Commenting.Fixme"/>
+
+	<rule ref="Generic.Classes.DuplicateClassName"/>
+
+	<rule ref="Generic.Metrics.CyclomaticComplexity">
+		<properties>
+			<property name="absoluteComplexity" value="30"/>
+			<property name="complexity" value="30"/>
+		</properties>
+	</rule>
+
+	<!--Use Unix newlines-->
+	<rule ref="Generic.Files.LineEndings">
+		<properties>
+			<property name="eolChar" value="\n"/>
+		</properties>
+	</rule>
+
+	<exclude-pattern>*/cache/*</exclude-pattern>
+	<exclude-pattern>*/ext/*</exclude-pattern>
+	<exclude-pattern>*/test/*</exclude-pattern>
+	<exclude-pattern>*/tools/*</exclude-pattern>
+	<exclude-pattern>*/reports/*</exclude-pattern>
+</ruleset>

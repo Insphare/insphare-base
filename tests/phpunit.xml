@@ -1,0 +1,36 @@
+<phpunit backupGlobals="false"
+		 backupStaticAttributes="false"
+		 bootstrap="bootstrap.php"
+		 colors="true"
+		 convertErrorsToExceptions="true"
+		 convertNoticesToExceptions="true"
+		 convertWarningsToExceptions="true"
+		 processIsolation="false"
+		 stopOnFailure="false"
+		 syntaxCheck="false"
+		 testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader">
+	<php>
+		<const name="UNIT_TESTS" value="true"/>
+	</php>
+	<groups>
+		<exclude>
+			<group>slow</group>
+		</exclude>
+	</groups>
+	<testsuites>
+		<testsuite name="SystemTests">
+			<directory>system</directory>
+		</testsuite>
+		<testsuite name="UnitTests">
+			<directory>unit</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist>
+			<directory suffix=".php">../lib</directory>
+			<exclude>
+				<directory suffix=".php">../ext</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+</phpunit>
