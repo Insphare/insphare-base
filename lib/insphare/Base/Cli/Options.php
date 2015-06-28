@@ -287,7 +287,7 @@ class Options {
 	public function parse() {
 		$strShortOpts = $this->getShortOptionsString();
 		$arrLongOpts = $this->getLongOptionsArray();
-		$opts = getopt($strShortOpts, $arrLongOpts);
+		$opts = getopt(trim($strShortOpts), $arrLongOpts);
 
 		foreach ($opts as $strOptionName => $strOptionValue) {
 			$config = $this->getConfigByKey($strOptionName);
