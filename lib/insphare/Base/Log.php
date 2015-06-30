@@ -70,11 +70,11 @@ class Log {
 	}
 
 	/**
-	 * @param Exception $e
+	 * @param \Exception $e
 	 *
 	 * @return array
 	 */
-	public function exception(Exception $e) {
+	public function exception(\Exception $e) {
 
 		$message = array();
 		$message[] = '';
