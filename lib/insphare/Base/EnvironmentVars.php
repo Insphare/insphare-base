@@ -12,6 +12,7 @@ class EnvironmentVars {
 	const BASE_PATH = 'base.path';
 	const CONFIG_PATH = 'config.path';
 	const CACHE_PATH = 'cache.path';
+	const CRON_PATH = 'cron.path';
 	const EXTERNAL_PATH = 'external.path';
 	const CONSOLE_PATH = 'console.path';
 	const TOOLS_PATH = 'tools.path';
