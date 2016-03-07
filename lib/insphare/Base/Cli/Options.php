@@ -289,6 +289,25 @@ class Options {
 		$arrLongOpts = $this->getLongOptionsArray();
 		$opts = getopt(trim($strShortOpts), $arrLongOpts);
 
+		// hotfix that: php css.php -a="Web" -l="blackrockdigital" -t="main"
+		// because, it have more options given as defined... result is that:
+		//array(1) {
+		//  'a' =>
+		//  array(3) {
+		//    [0] =>
+		//    string(3) "Web"
+		//    [1] =>
+		//    string(13) "ckrockdigital"
+		//    [2] =>
+		//    string(2) "in"
+		//  }
+		//}
+		// and should convert into ['a' => 'Web']
+		$arrayKeys = (is_array($opts) ? array_keys($opts) : []);
+		if (is_array($opts) && count($opts) === 1 && !empty($opts[current($arrayKeys)]) && is_array($opts['a']) && $arrayKeys[0] === 'a') {
+			$opts = ['a' => current($opts[current($arrayKeys)])];
+		}
+
 		foreach ($opts as $strOptionName => $strOptionValue) {
 			$config = $this->getConfigByKey($strOptionName);
 
