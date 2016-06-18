@@ -23,6 +23,7 @@ class EnvironmentVars {
 	const CURRENT_ROUTE = 'http.current.route';
 	const ENTITY_DIR = 'entity.dir';
 	const MVC_CORE_DIRECTORY = 'mvc.core.directory';
+	const IS_MOBILE_MODE = 'is.mobile.mode';
 
 	/**
 	 * @var array
