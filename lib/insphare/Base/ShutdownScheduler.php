@@ -107,7 +107,11 @@ class ShutdownScheduler {
 	 * @param callable|\Insphare\Base\ShutdownScheduler\Callback $callback
 	 */
 	private function addCallback(Callback $callback) {
-		$this->callbacks->offsetSet(md5(json_encode($callback)), $callback);
+		$index = md5(json_encode($callback));
+		if (is_object($callback)) {
+			$index = spl_object_hash($callback);
+		}
+		$this->callbacks->offsetSet($index, $callback);
 	}
 
 	/**
@@ -126,7 +130,7 @@ class ShutdownScheduler {
 					break;
 
 				case $callback->isInstanceCall():
-					$reflectionClass = new ReflectionClass($callback->getObjectName());
+					$reflectionClass = new \ReflectionClass($callback->getObjectName());
 					if (null !== $reflectionClass->getConstructor()) {
 						$realClass = $reflectionClass->newInstanceArgs($callback->getConstructorArguments());
 					}
