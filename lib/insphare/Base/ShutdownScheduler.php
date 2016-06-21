@@ -119,7 +119,7 @@ class ShutdownScheduler {
 	 */
 	public function callRegisteredShutdown() {
 		/** @var $callback Callback */
-		foreach ($this->callbacks as $callback) {
+		foreach ($this->callbacks->getArrayCopy() as $callback) {
 			switch (true) {
 				case $callback->isStaticCall():
 					call_user_func_array($callback->getObjectName() . "::" . $callback->getMethodName(), $callback->getMethodArguments());
