@@ -33,7 +33,15 @@ class Setup {
 	 */
 	private $proxyPath = '';
 
+	/**
+	 * @var bool
+	 */
 	private static $isAlreadyRunning = false;
+
+	/**
+	 * @var null
+	 */
+	private $cacheFilePath = null;
 
 	/**
 	 *
@@ -45,6 +53,21 @@ class Setup {
 
 		self::$isAlreadyRunning = 1;
 	}
+
+	/**
+	 * @return null
+	 */
+	public function getCacheFilePath() {
+		return $this->cacheFilePath;
+	}
+
+	/**
+	 * @param null $cacheFilePath
+	 */
+	public function setCacheFilePath($cacheFilePath) {
+		$this->cacheFilePath = $cacheFilePath;
+	}
+
 
 	/**
 	 * Add include path for more config directories and append or overwrite our variables in our known config environment.
@@ -76,6 +99,14 @@ class Setup {
 	}
 
 	private function loadConfig() {
+		$blnUseCache = !is_null($this->getCacheFilePath());
+		if ($blnUseCache && file_exists($this->getCacheFilePath())) {
+			$cachedData = unserialize(file_get_contents($this->getCacheFilePath()));
+			if (!empty($cachedData)) {
+				return $cachedData;
+			}
+		}
+
 		$envConfig = array();
 		foreach ($this->configDirs as $dir) {
 			$fileSpl = new DirectoryIterator($dir);
@@ -84,6 +115,10 @@ class Setup {
 				$config = Yaml::parse(file_get_contents((string)$splFile));
 				$envConfig = array_replace_recursive($envConfig, (array)$config);
 			}
+		}
+
+		if (true === $blnUseCache) {
+			file_put_contents($this->getCacheFilePath(), serialize($envConfig));
 		}
 
 		return $envConfig;
