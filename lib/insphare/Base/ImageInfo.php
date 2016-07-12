@@ -111,6 +111,13 @@ class ImageInfo {
 	}
 
 	/**
+	 * @return float
+	 */
+	public function getSize() {
+		return $this->width * $this->height;
+	}
+
+	/**
 	 * Typ of IMG_GIF or IMG_PNG or IMG_GIF
 	 * @param int $type
 	 * @return bool
