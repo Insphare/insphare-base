@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "symfony/yaml": "~2.6"
+        "symfony/yaml": "5.4.10"
     },
     "require-dev": {
     },
