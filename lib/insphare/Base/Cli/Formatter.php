@@ -30,14 +30,14 @@ class Formatter {
 	 * @param $string
 	 */
 	public function __construct($string) {
-		$this->container = new String((string)$string);
+		$this->container = new Strings((string)$string);
 	}
 
 	/**
 	 * @return $this
 	 */
 	public function addBreakLine() {
-		$this->container->addFlag(String::FLAG_BREAK_LINE);
+		$this->container->addFlag(Strings::FLAG_BREAK_LINE);
 		return $this;
 	}
 
@@ -45,7 +45,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addBlink() {
-		$this->container->addFlag(String::FLAG_BLINK);
+		$this->container->addFlag(Strings::FLAG_BLINK);
 		return $this;
 	}
 
@@ -53,7 +53,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addDim() {
-		$this->container->addFlag(String::FLAG_DIM);
+		$this->container->addFlag(Strings::FLAG_DIM);
 		return $this;
 	}
 
@@ -61,7 +61,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addHidden() {
-		$this->container->addFlag(String::FLAG_HIDDEN);
+		$this->container->addFlag(Strings::FLAG_HIDDEN);
 		return $this;
 	}
 
@@ -69,7 +69,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addReverse() {
-		$this->container->addFlag(String::FLAG_REVERSE);
+		$this->container->addFlag(Strings::FLAG_REVERSE);
 		return $this;
 	}
 
@@ -77,7 +77,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addReset() {
-		$this->container->addFlag(String::FLAG_RESET);
+		$this->container->addFlag(Strings::FLAG_RESET);
 		return $this;
 	}
 
@@ -85,7 +85,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addUnderlined() {
-		$this->container->addFlag(String::FLAG_UNDERLINED);
+		$this->container->addFlag(Strings::FLAG_UNDERLINED);
 		return $this;
 	}
 
@@ -93,7 +93,7 @@ class Formatter {
 	 * @return $this
 	 */
 	public function addBold() {
-		$this->container->addFlag(String::FLAG_BOLD);
+		$this->container->addFlag(Strings::FLAG_BOLD);
 		return $this;
 	}
 

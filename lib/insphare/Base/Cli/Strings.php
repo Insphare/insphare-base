@@ -5,7 +5,7 @@ use Insphare\Base\BitwiseFlag;
 /**
  * String
  */
-class String extends BitwiseFlag {
+class Strings extends BitwiseFlag {
 
 	const BOLD = 1;
 	const DIM = 2;
