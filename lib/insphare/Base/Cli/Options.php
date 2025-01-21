@@ -304,7 +304,7 @@ class Options {
 		//}
 		// and should convert into ['a' => 'Web']
 		$arrayKeys = (is_array($opts) ? array_keys($opts) : []);
-		if (is_array($opts) && count($opts) === 1 && !empty($opts[current($arrayKeys)]) && is_array($opts['a']) && $arrayKeys[0] === 'a') {
+		if (is_array($opts) && count($opts) === 1 && !empty($opts[current($arrayKeys)]) && isset($opts['a']) && is_array($opts['a']) && $arrayKeys[0] === 'a') {
 			$opts = ['a' => current($opts[current($arrayKeys)])];
 		}
 
